@@ -2131,6 +2131,111 @@
       });
     });
 
+    /* ============================================================
+       ASK THE ORACLE — Claude API chat panel
+       ============================================================ */
+    const ORACLE_SYSTEM = c => `You are the Oracle — a wise, slightly dramatic geopolitical scholar with a taste for the aphoristic. You speak as if you have read every cable, every newspaper, and every memoir from every foreign ministry. You are grounded in facts as of 2024–2025, candid about uncertainty, and wary of propaganda from any quarter.
+
+The traveler before you is inquiring about **${c.name}** (capital: ${c.capital}).
+
+Known context about ${c.name}:
+- Government: ${c.gov}
+- Head of state: ${c.leader}
+- Major cities: ${c.cities.join(", ")}
+- Alliances / blocs: ${c.alliances.join(", ")}
+- Notable neighbors: ${c.neighbors.map(n => `${n.name} (${n.rel})`).join("; ")}
+- In one breath: ${c.fact}
+
+House style:
+- 2–5 short paragraphs. No bullet lists unless the traveler asks for one.
+- Literate but plain. A touch of dramatic flourish is welcome; theatricality is not.
+- If the traveler asks something you can't responsibly answer, say so with grace.
+- Stay focused on ${c.name}. If asked about elsewhere, relate it back.`;
+
+    function renderOracleLog() {
+      if (!state.oracleHistory.length) {
+        el.oracleLog.innerHTML = `<div class="oracle-msg bot" style="opacity:0.85;">The Oracle awaits your question. Ask about history, alliances, a specific leader — anything.</div>`;
+        return;
+      }
+      el.oracleLog.innerHTML = state.oracleHistory.map(m => {
+        const cls = m.role === "user" ? "user" : (m.error ? "bot error" : "bot");
+        return `<div class="oracle-msg ${cls}">${escapeHtml(m.content)}</div>`;
+      }).join("");
+      el.oracleLog.scrollTop = el.oracleLog.scrollHeight;
+    }
+
+    async function askOracle(question) {
+      if (state.countryIndex === null) return;
+      const country = COUNTRIES[state.regionId][state.countryIndex];
+
+      state.oracleHistory.push({ role: "user", content: question });
+      renderOracleLog();
+
+      // placeholder assistant bubble
+      const placeholder = { role: "assistant", content: "…consulting the star-charts…", pending: true };
+      state.oracleHistory.push(placeholder);
+      renderOracleLog();
+
+      const messages = state.oracleHistory
+        .filter(m => !m.pending)
+        .map(m => ({ role: m.role, content: m.content }));
+
+      try {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "anthropic-version": "2023-06-01",
+            "anthropic-dangerous-direct-browser-access": "true"
+          },
+          body: JSON.stringify({
+            model: "claude-sonnet-4-20250514",
+            max_tokens: 900,
+            system: ORACLE_SYSTEM(country),
+            messages
+          })
+        });
+
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`API ${res.status}: ${text.slice(0, 200)}`);
+        }
+        const data = await res.json();
+        const reply = (data.content || [])
+          .filter(b => b.type === "text")
+          .map(b => b.text)
+          .join("\n")
+          .trim() || "(The Oracle was silent.)";
+
+        // replace the placeholder
+        state.oracleHistory[state.oracleHistory.length - 1] = {
+          role: "assistant", content: reply
+        };
+      } catch (err) {
+        state.oracleHistory[state.oracleHistory.length - 1] = {
+          role: "assistant",
+          content: `The Oracle's lamp has flickered out. (${err.message})`,
+          error: true
+        };
+      }
+      renderOracleLog();
+    }
+
+    el.oracleForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const q = el.oracleInput.value.trim();
+      if (!q) return;
+      el.oracleInput.value = "";
+      const btn = el.oracleForm.querySelector("button");
+      btn.disabled = true;
+      try {
+        await askOracle(q);
+      } finally {
+        btn.disabled = false;
+        el.oracleInput.focus();
+      }
+    });
+
     /* ---------- BOOT ---------- */
     renderRegions();
     showLayer("regions");
