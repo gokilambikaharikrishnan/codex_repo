@@ -884,6 +884,226 @@
         ]
       }
     ];
+
+    /* ============================================================
+       COUNTRY DATA — EUROPE
+       ============================================================ */
+    COUNTRIES.europe = [
+      {
+        name: "United Kingdom", flag: "🇬🇧", capital: "London",
+        cities: ["Birmingham", "Manchester", "Glasgow", "Edinburgh"],
+        gov: "Parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Keir Starmer (since Jul 2024); King Charles III",
+        alliances: ["NATO", "G7", "G20", "Commonwealth", "Five Eyes", "UN Security Council (P5)"],
+        fact: "Post-Brexit, newly Labour, and quietly rebuilding ties with Europe without formally rejoining it. Still punching well above its weight in defense, intelligence, and finance.",
+        neighbors: [
+          { name: "Ireland", rel: "complex", note: "Open border complicated by Brexit and Northern Ireland protocol." },
+          { name: "France", rel: "complex", note: "Close ally; endless cross-Channel friction over migrants and fishing." }
+        ]
+      },
+      {
+        name: "France", flag: "🇫🇷", capital: "Paris",
+        cities: ["Marseille", "Lyon", "Toulouse", "Nice"],
+        gov: "Semi-presidential republic", govType: "democracy",
+        leader: "President Emmanuel Macron (since 2017)",
+        alliances: ["NATO", "EU", "G7", "G20", "UN Security Council (P5)"],
+        fact: "Europe's only nuclear power in the EU and its most restless street. Macron's second term is hemmed in by a hung parliament, a rising far right, and a budget the bond market doesn't love.",
+        neighbors: [
+          { name: "Germany", rel: "friendly", note: "The Franco-German motor that drives the EU." },
+          { name: "Italy", rel: "complex", note: "Allies on paper; sparring on migration." },
+          { name: "Spain", rel: "friendly", note: "Shared borders and energy interconnections." }
+        ]
+      },
+      {
+        name: "Germany", flag: "🇩🇪", capital: "Berlin",
+        cities: ["Hamburg", "Munich", "Cologne", "Frankfurt"],
+        gov: "Federal parliamentary republic", govType: "democracy",
+        leader: "Chancellor Friedrich Merz (since May 2025)",
+        alliances: ["NATO", "EU", "G7", "G20"],
+        fact: "Europe's industrial heart is in the worst economic funk in a generation — cheap Russian gas gone, China shifting from customer to competitor. Merz's CDU-led coalition is betting on re-armament and deregulation.",
+        neighbors: [
+          { name: "France", rel: "friendly", note: "EU's indispensable partnership." },
+          { name: "Poland", rel: "complex", note: "Warming under Tusk; old grievances never fully buried." },
+          { name: "Netherlands", rel: "friendly", note: "Major trade and fiscal-policy ally." }
+        ]
+      },
+      {
+        name: "Italy", flag: "🇮🇹", capital: "Rome",
+        cities: ["Milan", "Naples", "Turin", "Florence"],
+        gov: "Parliamentary republic", govType: "democracy",
+        leader: "Prime Minister Giorgia Meloni (since Oct 2022)",
+        alliances: ["NATO", "EU", "G7", "G20"],
+        fact: "A post-fascist party leader turned out to be one of the EU's more predictable players. Meloni is Ukraine-hawkish, migration-hawkish, and — unusually — a bridge between Brussels and Trump's Washington.",
+        neighbors: [
+          { name: "France", rel: "complex", note: "Migration and Libya are perennial flashpoints." },
+          { name: "Austria", rel: "friendly", note: "Alpine and economic partner." },
+          { name: "Slovenia", rel: "friendly", note: "Quiet Adriatic border." }
+        ]
+      },
+      {
+        name: "Spain", flag: "🇪🇸", capital: "Madrid",
+        cities: ["Barcelona", "Valencia", "Seville", "Zaragoza"],
+        gov: "Parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Pedro Sánchez (since 2018); King Felipe VI",
+        alliances: ["NATO", "EU"],
+        fact: "Sánchez has governed with a coalition so fragile it depends on Catalan separatists. Spain is also one of the EU's loudest voices for recognizing Palestinian statehood.",
+        neighbors: [
+          { name: "Portugal", rel: "friendly", note: "Iberian Peninsula solidarity." },
+          { name: "France", rel: "friendly", note: "Pyrenees neighbor; energy partner." },
+          { name: "Morocco", rel: "complex", note: "Migration flashpoint across Ceuta and Melilla." }
+        ]
+      },
+      {
+        name: "Portugal", flag: "🇵🇹", capital: "Lisbon",
+        cities: ["Porto", "Braga", "Coimbra", "Faro"],
+        gov: "Semi-presidential republic", govType: "democracy",
+        leader: "Prime Minister Luís Montenegro (since Apr 2024)",
+        alliances: ["NATO", "EU"],
+        fact: "After a decade of Socialist rule, a center-right minority government took over. Portugal's digital-nomad boom has also driven housing costs beyond the reach of many Portuguese.",
+        neighbors: [
+          { name: "Spain", rel: "friendly", note: "Iberian cooperation on energy and water." }
+        ]
+      },
+      {
+        name: "Poland", flag: "🇵🇱", capital: "Warsaw",
+        cities: ["Kraków", "Łódź", "Wrocław", "Poznań"],
+        gov: "Parliamentary republic", govType: "democracy",
+        leader: "Prime Minister Donald Tusk (since Dec 2023)",
+        alliances: ["NATO", "EU"],
+        fact: "The biggest military spender in NATO relative to GDP, and Ukraine's most indispensable rear base. Tusk's pro-EU coalition is undoing eight years of PiS-era judicial overhaul under fierce presidential resistance.",
+        neighbors: [
+          { name: "Ukraine", rel: "friendly", note: "Primary conduit of Western aid, despite grain-trade fights." },
+          { name: "Germany", rel: "complex", note: "Reparations talk on ice; cooperation on defense rising." },
+          { name: "Belarus", rel: "tense", note: "Engineered border migration crisis ongoing." }
+        ]
+      },
+      {
+        name: "Ukraine", flag: "🇺🇦", capital: "Kyiv",
+        cities: ["Kharkiv", "Odesa", "Dnipro", "Lviv"],
+        gov: "Semi-presidential republic (martial law)", govType: "democracy",
+        leader: "President Volodymyr Zelenskyy (since 2019)",
+        alliances: ["EU candidate", "NATO aspirant"],
+        fact: "Four years into full-scale war, Ukraine is defending Europe's eastern flank on a drone-first battlefield. Peace talks in 2025 have placed enormous pressure on Kyiv to trade territory for security guarantees.",
+        neighbors: [
+          { name: "Russia", rel: "tense", note: "Invader since 2022; still occupies ~18% of Ukrainian territory." },
+          { name: "Poland", rel: "friendly", note: "Essential logistics and refugee partner." },
+          { name: "Belarus", rel: "tense", note: "Launch pad for 2022 invasion." }
+        ]
+      },
+      {
+        name: "Russia", flag: "🇷🇺", capital: "Moscow",
+        cities: ["Saint Petersburg", "Novosibirsk", "Yekaterinburg", "Kazan"],
+        gov: "Federal semi-presidential republic", govType: "authoritarian",
+        leader: "President Vladimir Putin (since 2000, interrupted 2008–12)",
+        alliances: ["CSTO", "BRICS", "SCO", "UN Security Council (P5)"],
+        fact: "Eleven time zones of pipelines, nukes, and personal autocracy. The Ukraine war has remade Russia into a sanctioned wartime economy that now depends on China, Iran, and North Korea.",
+        neighbors: [
+          { name: "Ukraine", rel: "tense", note: "Full-scale invasion since Feb 2022." },
+          { name: "China", rel: "friendly", note: "'No-limits' partnership, lopsided in Beijing's favor." },
+          { name: "Finland", rel: "tense", note: "New NATO border; Helsinki closed crossings." }
+        ]
+      },
+      {
+        name: "Netherlands", flag: "🇳🇱", capital: "Amsterdam",
+        cities: ["Rotterdam", "The Hague", "Utrecht", "Eindhoven"],
+        gov: "Parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Dick Schoof (since Jul 2024); King Willem-Alexander",
+        alliances: ["NATO", "EU", "G20"],
+        fact: "Home to ASML — the only company on Earth that makes the machines that make the most advanced chips. That makes the Hague a surprisingly important piece on the US-China chessboard.",
+        neighbors: [
+          { name: "Germany", rel: "friendly", note: "Deeply integrated economies." },
+          { name: "Belgium", rel: "friendly", note: "Benelux founding partner." }
+        ]
+      },
+      {
+        name: "Belgium", flag: "🇧🇪", capital: "Brussels",
+        cities: ["Antwerp", "Ghent", "Charleroi", "Liège"],
+        gov: "Federal parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Bart De Wever (since Feb 2025); King Philippe",
+        alliances: ["NATO", "EU"],
+        fact: "De facto capital of the EU and NATO, and yet almost ungovernable at home. A Flemish nationalist now leads the federal government of a country his party technically wants to dissolve.",
+        neighbors: [
+          { name: "France", rel: "friendly", note: "Language and economic ties." },
+          { name: "Netherlands", rel: "friendly", note: "Benelux neighbor." }
+        ]
+      },
+      {
+        name: "Switzerland", flag: "🇨🇭", capital: "Bern",
+        cities: ["Zurich", "Geneva", "Basel", "Lausanne"],
+        gov: "Federal directorial republic", govType: "democracy",
+        leader: "Rotating Federal Council (Karin Keller-Sutter, 2025)",
+        alliances: ["UN", "EFTA", "Schengen"],
+        fact: "Neutral for 200 years, but broke with tradition to sanction Russia in 2022. Home to the UN's Geneva hub, FIFA, and enough gold to keep the franc legendary.",
+        neighbors: [
+          { name: "Germany", rel: "friendly", note: "Largest trade partner." },
+          { name: "France", rel: "friendly", note: "Geneva's hinterland." },
+          { name: "Italy", rel: "friendly", note: "Alpine and banking ties." }
+        ]
+      },
+      {
+        name: "Sweden", flag: "🇸🇪", capital: "Stockholm",
+        cities: ["Gothenburg", "Malmö", "Uppsala", "Västerås"],
+        gov: "Parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Ulf Kristersson (since 2022); King Carl XVI Gustaf",
+        alliances: ["NATO (2024)", "EU"],
+        fact: "Ended 200 years of neutrality to join NATO in 2024 — a direct consequence of Russia's invasion of Ukraine. Stockholm now anchors Baltic security from the west.",
+        neighbors: [
+          { name: "Norway", rel: "friendly", note: "Nordic Council partner." },
+          { name: "Finland", rel: "friendly", note: "NATO ally since 2023." },
+          { name: "Denmark", rel: "friendly", note: "Öresund twin." }
+        ]
+      },
+      {
+        name: "Norway", flag: "🇳🇴", capital: "Oslo",
+        cities: ["Bergen", "Trondheim", "Stavanger", "Tromsø"],
+        gov: "Parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Jonas Gahr Støre (since 2021); King Harald V",
+        alliances: ["NATO", "EFTA", "Schengen"],
+        fact: "Europe's largest gas supplier after Russia dropped out. The sovereign wealth fund — $1.8 trillion and counting — quietly owns about 1.5% of every listed company on Earth.",
+        neighbors: [
+          { name: "Sweden", rel: "friendly", note: "Scandinavian twin." },
+          { name: "Russia", rel: "tense", note: "Arctic frontier; espionage friction rising." }
+        ]
+      },
+      {
+        name: "Finland", flag: "🇫🇮", capital: "Helsinki",
+        cities: ["Espoo", "Tampere", "Vantaa", "Turku"],
+        gov: "Parliamentary republic", govType: "democracy",
+        leader: "President Alexander Stubb (since Mar 2024); PM Petteri Orpo",
+        alliances: ["NATO (2023)", "EU"],
+        fact: "Went from famously neutral to NATO's 32nd member in under two years. Shares 1,340 km of border with Russia — longer than any other EU state.",
+        neighbors: [
+          { name: "Sweden", rel: "friendly", note: "Joined NATO together." },
+          { name: "Russia", rel: "tense", note: "All border crossings closed over 'weaponized' migration." }
+        ]
+      },
+      {
+        name: "Greece", flag: "🇬🇷", capital: "Athens",
+        cities: ["Thessaloniki", "Patras", "Heraklion", "Larissa"],
+        gov: "Parliamentary republic", govType: "democracy",
+        leader: "Prime Minister Kyriakos Mitsotakis (since 2019)",
+        alliances: ["NATO", "EU"],
+        fact: "A decade after near-collapse, Greece is the Eurozone's comeback story — growing faster than the bloc average and attracting foreign investment at record pace.",
+        neighbors: [
+          { name: "Turkey", rel: "complex", note: "Aegean disputes, cautious rapprochement." },
+          { name: "Bulgaria", rel: "friendly", note: "Energy-corridor partner." },
+          { name: "Albania", rel: "friendly", note: "Candidate-country patron in Brussels." }
+        ]
+      },
+      {
+        name: "Hungary", flag: "🇭🇺", capital: "Budapest",
+        cities: ["Debrecen", "Szeged", "Miskolc", "Pécs"],
+        gov: "Parliamentary republic", govType: "mixed",
+        leader: "Prime Minister Viktor Orbán (since 2010)",
+        alliances: ["NATO", "EU"],
+        fact: "The EU's loudest dissenter — Orbán's 'illiberal democracy' vetoes aid to Ukraine, cozies up to Putin and Xi, and makes Brussels grind its teeth every summit.",
+        neighbors: [
+          { name: "Austria", rel: "friendly", note: "Historic and economic ties." },
+          { name: "Romania", rel: "complex", note: "Hungarian minority tensions in Transylvania." },
+          { name: "Ukraine", rel: "tense", note: "Orbán blocks EU Ukraine aid repeatedly." }
+        ]
+      }
+    ];
   </script>
 </body>
 </html>
