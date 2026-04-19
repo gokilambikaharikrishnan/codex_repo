@@ -1926,6 +1926,214 @@
         ]
       }
     ];
+
+    /* ============================================================
+       NAVIGATION + RENDERING
+       ============================================================ */
+    const state = {
+      layer: "regions",   // "regions" | "countries" | "dossier"
+      regionId: null,
+      countryIndex: null,
+      oracleHistory: []
+    };
+
+    const el = {
+      layerRegions:   document.getElementById("layer-regions"),
+      layerCountries: document.getElementById("layer-countries"),
+      layerDossier:   document.getElementById("layer-dossier"),
+      regionGrid:     document.getElementById("region-grid"),
+      countryGrid:    document.getElementById("country-grid"),
+      dossier:        document.getElementById("dossier"),
+      regionTitle:    document.getElementById("region-title"),
+      regionTagline:  document.getElementById("region-tagline"),
+      breadcrumbs:    document.getElementById("breadcrumbs"),
+      oracleLog:      document.getElementById("oracle-log"),
+      oracleForm:     document.getElementById("oracle-form"),
+      oracleInput:    document.getElementById("oracle-input")
+    };
+
+    /* ---------- LAYER TRANSITIONS ---------- */
+    function showLayer(name) {
+      const layers = {
+        regions: el.layerRegions,
+        countries: el.layerCountries,
+        dossier: el.layerDossier
+      };
+      Object.values(layers).forEach(l => {
+        l.classList.remove("active", "visible");
+      });
+      const target = layers[name];
+      target.classList.add("active");
+      // force reflow so the transition actually runs
+      void target.offsetWidth;
+      target.classList.add("visible");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      state.layer = name;
+      renderBreadcrumbs();
+    }
+
+    /* ---------- BREADCRUMBS ---------- */
+    function renderBreadcrumbs() {
+      const crumbs = [];
+      crumbs.push(`<button data-nav="regions">World</button>`);
+      if (state.layer === "countries" || state.layer === "dossier") {
+        const region = REGIONS.find(r => r.id === state.regionId);
+        if (state.layer === "countries") {
+          crumbs.push(`<span class="sep">→</span>`);
+          crumbs.push(`<span class="current">${region.name}</span>`);
+        } else {
+          crumbs.push(`<span class="sep">→</span>`);
+          crumbs.push(`<button data-nav="countries">${region.name}</button>`);
+        }
+      }
+      if (state.layer === "dossier") {
+        const country = COUNTRIES[state.regionId][state.countryIndex];
+        crumbs.push(`<span class="sep">→</span>`);
+        crumbs.push(`<span class="current">${country.flag} ${country.name}</span>`);
+      }
+      el.breadcrumbs.innerHTML = crumbs.join(" ");
+      el.breadcrumbs.querySelectorAll("button[data-nav]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const dest = btn.getAttribute("data-nav");
+          if (dest === "regions") goToRegions();
+          if (dest === "countries") goToCountries(state.regionId);
+        });
+      });
+    }
+
+    /* ---------- LAYER 1: REGIONS ---------- */
+    function renderRegions() {
+      el.regionGrid.innerHTML = REGIONS.map(r => {
+        const count = (COUNTRIES[r.id] || []).length;
+        return `
+          <div class="region-card" data-region="${r.id}">
+            <span class="region-icon">${r.icon}</span>
+            <h3>${r.name}</h3>
+            <div class="count">${count} countries charted</div>
+            <p class="tagline">${r.tagline}</p>
+          </div>
+        `;
+      }).join("");
+      el.regionGrid.querySelectorAll(".region-card").forEach(card => {
+        card.addEventListener("click", () => {
+          goToCountries(card.getAttribute("data-region"));
+        });
+      });
+    }
+
+    function goToRegions() {
+      state.regionId = null;
+      state.countryIndex = null;
+      showLayer("regions");
+    }
+
+    /* ---------- LAYER 2: COUNTRIES ---------- */
+    function goToCountries(regionId) {
+      state.regionId = regionId;
+      state.countryIndex = null;
+      const region = REGIONS.find(r => r.id === regionId);
+      el.regionTitle.textContent = region.name;
+      el.regionTagline.textContent = region.tagline;
+      el.countryGrid.innerHTML = (COUNTRIES[regionId] || []).map((c, idx) => `
+        <div class="country-card" data-idx="${idx}">
+          <span class="flag">${c.flag}</span>
+          <h3 class="name">${c.name}</h3>
+          <div class="capital">${c.capital}</div>
+          <span class="gov-badge gov-${c.govType}">${badgeLabel(c.govType)}</span>
+        </div>
+      `).join("");
+      el.countryGrid.querySelectorAll(".country-card").forEach(card => {
+        card.addEventListener("click", () => {
+          goToDossier(parseInt(card.getAttribute("data-idx"), 10));
+        });
+      });
+      showLayer("countries");
+    }
+
+    function badgeLabel(type) {
+      return ({
+        democracy: "Democracy",
+        monarchy: "Monarchy",
+        authoritarian: "Authoritarian",
+        mixed: "Mixed / Hybrid"
+      })[type] || type;
+    }
+
+    /* ---------- LAYER 3: DOSSIER ---------- */
+    function goToDossier(idx) {
+      state.countryIndex = idx;
+      const c = COUNTRIES[state.regionId][idx];
+      // reset oracle conversation per country
+      state.oracleHistory = [];
+      renderOracleLog();
+
+      el.dossier.innerHTML = `
+        <div class="dossier-head">
+          <div class="dossier-flag">${c.flag}</div>
+          <div class="dossier-title">
+            <h2>${c.name}</h2>
+            <div class="subhead">Capital — ${c.capital}</div>
+            <span class="gov-badge gov-${c.govType}">${badgeLabel(c.govType)}</span>
+          </div>
+        </div>
+
+        <blockquote class="pull-quote">${escapeHtml(c.fact)}</blockquote>
+
+        <div class="dossier-grid">
+          <div class="field">
+            <label>Government</label>
+            <div class="value">${escapeHtml(c.gov)}</div>
+          </div>
+          <div class="field">
+            <label>Head of State</label>
+            <div class="value">${escapeHtml(c.leader)}</div>
+          </div>
+          <div class="field">
+            <label>Major Cities</label>
+            <div class="value">
+              <ul>${c.cities.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+            </div>
+          </div>
+          <div class="field">
+            <label>Alliances &amp; Blocs</label>
+            <div class="value alliances">
+              ${c.alliances.map(a => `<span class="alliance-chip">${escapeHtml(a)}</span>`).join("")}
+            </div>
+          </div>
+          <div class="field" style="grid-column: 1 / -1;">
+            <label>Notable Neighbors</label>
+            <div class="value neighbors">
+              ${c.neighbors.map(n => `
+                <div class="neighbor">
+                  <span><strong>${escapeHtml(n.name)}</strong> — ${escapeHtml(n.note)}</span>
+                  <span class="rel rel-${n.rel}">${n.rel}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+      showLayer("dossier");
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[s]));
+    }
+
+    /* ---------- BACK BUTTONS ---------- */
+    document.querySelectorAll("[data-back]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const t = btn.getAttribute("data-back");
+        if (t === "regions") goToRegions();
+        if (t === "countries") goToCountries(state.regionId);
+      });
+    });
+
+    /* ---------- BOOT ---------- */
+    renderRegions();
+    showLayer("regions");
   </script>
 </body>
 </html>
