@@ -1318,6 +1318,214 @@
         ]
       }
     ];
+
+    /* ============================================================
+       COUNTRY DATA — MIDDLE EAST
+       ============================================================ */
+    COUNTRIES.middle_east = [
+      {
+        name: "Saudi Arabia", flag: "🇸🇦", capital: "Riyadh",
+        cities: ["Jeddah", "Mecca", "Medina", "Dammam"],
+        gov: "Absolute monarchy", govType: "monarchy",
+        leader: "King Salman; Crown Prince/PM Mohammed bin Salman (MBS)",
+        alliances: ["Arab League", "GCC", "OPEC+", "BRICS", "G20"],
+        fact: "The world's swing oil producer, host of the 2034 World Cup, and staging ground for MBS's $1 trillion Vision 2030. Riyadh is also the most consequential broker between Tehran, Moscow, and Washington.",
+        neighbors: [
+          { name: "Yemen", rel: "tense", note: "Decade-long war winding down; Houthis ascendant." },
+          { name: "UAE", rel: "complex", note: "Ally and rising economic rival in the Gulf." },
+          { name: "Iraq", rel: "friendly", note: "Warming ties after decades of estrangement." }
+        ]
+      },
+      {
+        name: "Iran", flag: "🇮🇷", capital: "Tehran",
+        cities: ["Mashhad", "Isfahan", "Karaj", "Shiraz"],
+        gov: "Theocratic Islamic republic", govType: "authoritarian",
+        leader: "Supreme Leader Ali Khamenei; President Masoud Pezeshkian (since Jul 2024)",
+        alliances: ["SCO", "BRICS", "OPEC"],
+        fact: "A reformist president inherited a wrecked economy, a bloodied 'Axis of Resistance,' and direct missile exchanges with Israel for the first time ever. The nuclear program is closer to weapons-grade than ever.",
+        neighbors: [
+          { name: "Iraq", rel: "friendly", note: "Deep Shia political networks." },
+          { name: "Saudi Arabia", rel: "complex", note: "China-brokered 2023 rapprochement holding, barely." },
+          { name: "Afghanistan", rel: "tense", note: "Water and Taliban-era border friction." }
+        ]
+      },
+      {
+        name: "Israel", flag: "🇮🇱", capital: "Jerusalem (contested)",
+        cities: ["Tel Aviv", "Haifa", "Rishon LeZion", "Be'er Sheva"],
+        gov: "Parliamentary republic", govType: "democracy",
+        leader: "Prime Minister Benjamin Netanyahu (since Dec 2022)",
+        alliances: ["OECD", "Major non-NATO ally (US)", "Abraham Accords"],
+        fact: "At war on multiple fronts since Oct 7, 2023. Netanyahu's most right-wing coalition in history has reshaped the region — with Gaza in ruins, Hezbollah decimated, and Assad gone in Syria.",
+        neighbors: [
+          { name: "Palestine", rel: "tense", note: "Ongoing Gaza war; West Bank under expanded occupation." },
+          { name: "Lebanon", rel: "tense", note: "2024 war devastated Hezbollah; fragile ceasefire." },
+          { name: "Egypt", rel: "complex", note: "Cold peace strained over Gaza and Rafah crossing." }
+        ]
+      },
+      {
+        name: "Palestine", flag: "🇵🇸", capital: "East Jerusalem (claimed); Ramallah (admin)",
+        cities: ["Gaza City", "Hebron", "Nablus", "Bethlehem"],
+        gov: "Semi-presidential (partially recognized)", govType: "mixed",
+        leader: "President Mahmoud Abbas (since 2005, no elections since)",
+        alliances: ["Arab League", "OIC", "UN observer state"],
+        fact: "Recognized by 146 UN member states, including — since 2024 — Ireland, Spain, Norway, and Slovenia. Gaza has been devastated by 18+ months of war; the West Bank is increasingly fragmented by settlements.",
+        neighbors: [
+          { name: "Israel", rel: "tense", note: "Occupier and besieger; the central conflict." },
+          { name: "Egypt", rel: "complex", note: "Rafah crossing is Gaza's lifeline and chokehold." },
+          { name: "Jordan", rel: "friendly", note: "Home to millions of Palestinian diaspora." }
+        ]
+      },
+      {
+        name: "Turkey", flag: "🇹🇷", capital: "Ankara",
+        cities: ["Istanbul", "Izmir", "Bursa", "Adana"],
+        gov: "Presidential republic", govType: "mixed",
+        leader: "President Recep Tayyip Erdoğan (since 2014, PM 2003-14)",
+        alliances: ["NATO", "G20", "Council of Europe"],
+        fact: "The NATO member that talks to everyone — Russia, Ukraine, Hamas, Israel. Erdoğan's mayor-jailing, lira-crushing third decade has made Turkey both a regional heavyweight and a democratic backslider.",
+        neighbors: [
+          { name: "Syria", rel: "complex", note: "Major winner of Assad's 2024 fall; backs new HTS-led order." },
+          { name: "Greece", rel: "complex", note: "Aegean disputes calmer since 2023 thaw." },
+          { name: "Iraq", rel: "tense", note: "Frequent Turkish strikes on PKK in Iraqi Kurdistan." }
+        ]
+      },
+      {
+        name: "Syria", flag: "🇸🇾", capital: "Damascus",
+        cities: ["Aleppo", "Homs", "Latakia", "Hama"],
+        gov: "Transitional government (HTS-led)", govType: "mixed",
+        leader: "Interim President Ahmad al-Sharaa (since Dec 2024)",
+        alliances: ["Arab League (readmitted 2023)"],
+        fact: "Bashar al-Assad was toppled in December 2024 after 24 years in power, ending a 13-year civil war in 11 days. The country is now being pieced back together under a former al-Qaeda affiliate turned pragmatic statesman.",
+        neighbors: [
+          { name: "Turkey", rel: "friendly", note: "Ankara is the new government's principal backer." },
+          { name: "Israel", rel: "tense", note: "IDF seized the Syrian Golan buffer zone after Assad's fall." },
+          { name: "Lebanon", rel: "complex", note: "Hezbollah supply lines cut; refugees returning." }
+        ]
+      },
+      {
+        name: "Iraq", flag: "🇮🇶", capital: "Baghdad",
+        cities: ["Basra", "Mosul", "Erbil", "Najaf"],
+        gov: "Federal parliamentary republic", govType: "mixed",
+        leader: "Prime Minister Mohammed Shia' al-Sudani (since 2022)",
+        alliances: ["Arab League", "OPEC"],
+        fact: "The quiet stabilizer of the Middle East — major oil producer, US troops still on the ground, and a political elite that balances Tehran and Washington with nervous precision.",
+        neighbors: [
+          { name: "Iran", rel: "friendly", note: "Deep political and Shia clerical ties." },
+          { name: "Turkey", rel: "tense", note: "Water disputes and Turkish strikes in the north." },
+          { name: "Saudi Arabia", rel: "friendly", note: "Relations warmest since before 1990." }
+        ]
+      },
+      {
+        name: "Lebanon", flag: "🇱🇧", capital: "Beirut",
+        cities: ["Tripoli", "Sidon", "Tyre", "Zahle"],
+        gov: "Parliamentary republic", govType: "mixed",
+        leader: "President Joseph Aoun (since Jan 2025); PM Nawaf Salam",
+        alliances: ["Arab League"],
+        fact: "After two years without a president and a devastating war with Israel, Lebanon finally elected the army chief as head of state in 2025. A technocratic PM now tries to drag Beirut out of economic collapse.",
+        neighbors: [
+          { name: "Israel", rel: "tense", note: "2024 war devastated southern Lebanon." },
+          { name: "Syria", rel: "complex", note: "Border flux after Assad's fall; refugee waves." }
+        ]
+      },
+      {
+        name: "Jordan", flag: "🇯🇴", capital: "Amman",
+        cities: ["Zarqa", "Irbid", "Aqaba", "Salt"],
+        gov: "Parliamentary constitutional monarchy", govType: "monarchy",
+        leader: "King Abdullah II (since 1999); PM Jafar Hassan",
+        alliances: ["Arab League", "Major non-NATO ally (US)"],
+        fact: "The region's ultimate shock absorber — a kingdom quietly processing Gulf money, US aid, Israeli gas, and Palestinian refugees while refusing to become a substitute Palestinian state.",
+        neighbors: [
+          { name: "Israel", rel: "complex", note: "Peace treaty intact, popular anger over Gaza high." },
+          { name: "Syria", rel: "friendly", note: "Reopened border under Assad, re-negotiating with new government." },
+          { name: "Iraq", rel: "friendly", note: "Oil-for-goods and electricity linkages." }
+        ]
+      },
+      {
+        name: "United Arab Emirates", flag: "🇦🇪", capital: "Abu Dhabi",
+        cities: ["Dubai", "Sharjah", "Al Ain", "Ajman"],
+        gov: "Federal absolute monarchy", govType: "monarchy",
+        leader: "President Mohammed bin Zayed (MBZ, since 2022)",
+        alliances: ["Arab League", "GCC", "Abraham Accords", "BRICS"],
+        fact: "A federation of seven emirates that has become the region's commercial and diplomatic hub. The UAE's post-oil play — AI, logistics, tourism — has made Abu Dhabi one of the world's most influential mid-sized states.",
+        neighbors: [
+          { name: "Saudi Arabia", rel: "complex", note: "Close ally; increasing economic competition." },
+          { name: "Oman", rel: "friendly", note: "Quiet, stable neighbor." },
+          { name: "Iran", rel: "complex", note: "Pragmatic trade; cautious rapprochement." }
+        ]
+      },
+      {
+        name: "Qatar", flag: "🇶🇦", capital: "Doha",
+        cities: ["Al Rayyan", "Al Wakrah", "Umm Salal", "Lusail"],
+        gov: "Absolute monarchy", govType: "monarchy",
+        leader: "Emir Tamim bin Hamad Al Thani (since 2013)",
+        alliances: ["Arab League", "GCC", "Major non-NATO ally (US)"],
+        fact: "Hosts the biggest US military base in the region and the biggest Hamas political office. That combination makes tiny, gas-rich Qatar the planet's most active mediator — from Gaza to Kabul.",
+        neighbors: [
+          { name: "Saudi Arabia", rel: "friendly", note: "2021 blockade lifted; relations restored." },
+          { name: "UAE", rel: "complex", note: "Rivalry wrapped in friendly GCC summits." }
+        ]
+      },
+      {
+        name: "Egypt (MENA overlap)", flag: "🇪🇬", capital: "Cairo",
+        cities: ["Alexandria", "Giza", "Sharm El-Sheikh", "Luxor"],
+        gov: "Semi-presidential republic", govType: "authoritarian",
+        leader: "President Abdel Fattah el-Sisi",
+        alliances: ["Arab League", "AU", "BRICS"],
+        fact: "Though listed under Africa, Egypt sits at the heart of Middle East diplomacy — chairing Gaza ceasefire talks, guarding the Rafah crossing, and anchoring the Abraham Accords generation.",
+        neighbors: [
+          { name: "Israel", rel: "complex", note: "Cold peace; joint security at Rafah." },
+          { name: "Gaza/Palestine", rel: "complex", note: "Humanitarian corridor and migration buffer." }
+        ]
+      },
+      {
+        name: "Yemen", flag: "🇾🇪", capital: "Sana'a (Houthi); Aden (government)",
+        cities: ["Taiz", "Hodeidah", "Ibb", "Mukalla"],
+        gov: "Divided (Houthi North vs. internationally recognized government)", govType: "authoritarian",
+        leader: "Presidential Leadership Council (Rashad al-Alimi)",
+        alliances: ["Arab League"],
+        fact: "A decade of war has left the world's worst humanitarian crisis. The Houthis' Red Sea drone and missile campaign has remade global shipping and drawn direct US/UK strikes.",
+        neighbors: [
+          { name: "Saudi Arabia", rel: "tense", note: "Quietly negotiating exit strategy from the war." },
+          { name: "Oman", rel: "friendly", note: "Mediator and backchannel." }
+        ]
+      },
+      {
+        name: "Oman", flag: "🇴🇲", capital: "Muscat",
+        cities: ["Salalah", "Sohar", "Nizwa", "Sur"],
+        gov: "Absolute monarchy", govType: "monarchy",
+        leader: "Sultan Haitham bin Tariq (since 2020)",
+        alliances: ["Arab League", "GCC"],
+        fact: "The region's quiet diplomat — neutral, measured, the only Gulf state that talks to both Iran and Israel openly. Economic diversification under Vision 2040 is slow but steady.",
+        neighbors: [
+          { name: "UAE", rel: "friendly", note: "Deep economic and security ties." },
+          { name: "Yemen", rel: "complex", note: "Houthi talks facilitator." },
+          { name: "Saudi Arabia", rel: "friendly", note: "New road link eases travel." }
+        ]
+      },
+      {
+        name: "Kuwait", flag: "🇰🇼", capital: "Kuwait City",
+        cities: ["Al Ahmadi", "Hawalli", "Salmiya", "Jahra"],
+        gov: "Constitutional monarchy (parliament suspended)", govType: "monarchy",
+        leader: "Emir Meshal Al-Ahmad Al-Jaber Al-Sabah (since Dec 2023)",
+        alliances: ["Arab League", "GCC", "Major non-NATO ally (US)"],
+        fact: "The Gulf's most vocal parliamentary culture — now shelved. The new emir dissolved parliament in 2024 and suspended several articles of the constitution to push reforms through.",
+        neighbors: [
+          { name: "Saudi Arabia", rel: "friendly", note: "Closest ally; shared oil fields." },
+          { name: "Iraq", rel: "complex", note: "1990 war scars remain; relations normalized." }
+        ]
+      },
+      {
+        name: "Bahrain", flag: "🇧🇭", capital: "Manama",
+        cities: ["Muharraq", "Riffa", "Isa Town", "Hamad Town"],
+        gov: "Constitutional monarchy", govType: "monarchy",
+        leader: "King Hamad bin Isa Al Khalifa",
+        alliances: ["Arab League", "GCC", "Abraham Accords", "Major non-NATO ally (US)"],
+        fact: "Home to the US Fifth Fleet. A Sunni monarchy ruling a Shia-majority population — a quiet pressure cooker that Riyadh helped calm in 2011 and watches warily.",
+        neighbors: [
+          { name: "Saudi Arabia", rel: "friendly", note: "Causeway neighbor and ultimate backer." },
+          { name: "Qatar", rel: "complex", note: "Long rivalry; restored ties in 2021." }
+        ]
+      }
+    ];
   </script>
 </body>
 </html>
