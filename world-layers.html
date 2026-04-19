@@ -664,6 +664,226 @@
         tagline: "A thousand islands and two big siblings, scattered across the blue third of the globe."
       }
     ];
+
+    /* ============================================================
+       COUNTRY DATA — AMERICAS
+       ============================================================ */
+    const COUNTRIES = {};
+
+    COUNTRIES.americas = [
+      {
+        name: "United States", flag: "🇺🇸", capital: "Washington, D.C.",
+        cities: ["New York", "Los Angeles", "Chicago", "Houston"],
+        gov: "Federal presidential republic", govType: "democracy",
+        leader: "President Donald Trump (2nd term, from 2025)",
+        alliances: ["NATO", "G7", "G20", "OECD", "Five Eyes", "UN Security Council (P5)"],
+        fact: "The world's largest economy and its loudest democracy. Still the linchpin of the Western security order, but a polarized domestic politics increasingly shapes how — and whether — it shows up abroad.",
+        neighbors: [
+          { name: "Canada", rel: "friendly", note: "Largest trading partner; shared NORAD defense." },
+          { name: "Mexico", rel: "complex", note: "USMCA trade partner; migration and fentanyl strain the relationship." },
+          { name: "Cuba", rel: "tense", note: "Cold-war-era embargo still in place, 90 miles offshore." }
+        ]
+      },
+      {
+        name: "Canada", flag: "🇨🇦", capital: "Ottawa",
+        cities: ["Toronto", "Montréal", "Vancouver", "Calgary"],
+        gov: "Federal parliamentary constitutional monarchy", govType: "democracy",
+        leader: "Prime Minister Mark Carney (since 2025)",
+        alliances: ["NATO", "G7", "G20", "Commonwealth", "Five Eyes"],
+        fact: "A G7 economy with a population smaller than California. Oil-rich, immigration-friendly, and newly assertive about its sovereignty under fresh pressure from a second Trump White House.",
+        neighbors: [
+          { name: "United States", rel: "complex", note: "Closest ally; also the source of tariff threats and annexation trolling." },
+          { name: "Greenland (Denmark)", rel: "friendly", note: "Arctic neighbor and climate-science partner." }
+        ]
+      },
+      {
+        name: "Mexico", flag: "🇲🇽", capital: "Mexico City",
+        cities: ["Guadalajara", "Monterrey", "Puebla", "Tijuana"],
+        gov: "Federal presidential republic", govType: "democracy",
+        leader: "President Claudia Sheinbaum (since Oct 2024)",
+        alliances: ["USMCA", "G20", "OECD", "Pacific Alliance"],
+        fact: "The first female president in Mexican history inherited a country wrestling with cartel violence, judicial overhaul, and a U.S. neighbor threatening tariffs and troops. Mexico is quietly the world's 12th-largest economy.",
+        neighbors: [
+          { name: "United States", rel: "tense", note: "Border, migration, and trade friction dominate the agenda." },
+          { name: "Guatemala", rel: "complex", note: "Transit route for Central American migration northward." },
+          { name: "Belize", rel: "friendly", note: "Small, stable border; tourism and trade." }
+        ]
+      },
+      {
+        name: "Brazil", flag: "🇧🇷", capital: "Brasília",
+        cities: ["São Paulo", "Rio de Janeiro", "Salvador", "Belo Horizonte"],
+        gov: "Federal presidential republic", govType: "democracy",
+        leader: "President Luiz Inácio Lula da Silva (since 2023)",
+        alliances: ["BRICS", "G20", "Mercosur", "OAS"],
+        fact: "South America's giant and the continent's only Portuguese-speaking country. Lula's third act has put Brazil back at the center of Global South diplomacy — hosting BRICS expansion, brokering with both Washington and Beijing.",
+        neighbors: [
+          { name: "Argentina", rel: "complex", note: "Economic partner; ideological whiplash with Milei in Buenos Aires." },
+          { name: "Venezuela", rel: "tense", note: "Border strain over refugees and the Essequibo dispute." },
+          { name: "Colombia", rel: "friendly", note: "Amazon and drug-policy cooperation." }
+        ]
+      },
+      {
+        name: "Argentina", flag: "🇦🇷", capital: "Buenos Aires",
+        cities: ["Córdoba", "Rosario", "Mendoza", "La Plata"],
+        gov: "Federal presidential republic", govType: "democracy",
+        leader: "President Javier Milei (since Dec 2023)",
+        alliances: ["G20", "Mercosur", "OAS"],
+        fact: "A chainsaw-wielding libertarian economist took a country hooked on inflation and tried shock therapy. Early results — inflation down, poverty up — make Argentina 2024–26 the world's loudest free-market experiment.",
+        neighbors: [
+          { name: "Brazil", rel: "complex", note: "Largest trading partner despite political opposites." },
+          { name: "Chile", rel: "friendly", note: "Long Andean border and strong bilateral ties." },
+          { name: "Uruguay", rel: "friendly", note: "Mercosur neighbor; shared River Plate." }
+        ]
+      },
+      {
+        name: "Chile", flag: "🇨🇱", capital: "Santiago",
+        cities: ["Valparaíso", "Concepción", "Antofagasta", "La Serena"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Gabriel Boric (since 2022)",
+        alliances: ["OECD", "Pacific Alliance", "OAS"],
+        fact: "The world's copper superpower and emerging lithium giant — critical minerals for the energy transition. A young leftist president now governs a country that twice rejected his proposed constitutions.",
+        neighbors: [
+          { name: "Argentina", rel: "friendly", note: "Shared Andes; deep cultural ties." },
+          { name: "Bolivia", rel: "tense", note: "Still no diplomatic relations — a 140-year sea-access dispute." },
+          { name: "Peru", rel: "complex", note: "Historic rivalry softened by trade." }
+        ]
+      },
+      {
+        name: "Colombia", flag: "🇨🇴", capital: "Bogotá",
+        cities: ["Medellín", "Cali", "Barranquilla", "Cartagena"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Gustavo Petro (since 2022)",
+        alliances: ["OECD", "Pacific Alliance", "OAS"],
+        fact: "Its first-ever leftist government is attempting 'total peace' with remaining guerrilla and cartel factions while navigating a choppy relationship with Washington over drug policy and Venezuela.",
+        neighbors: [
+          { name: "Venezuela", rel: "complex", note: "Reopened border; 2.8 million Venezuelans live in Colombia." },
+          { name: "Ecuador", rel: "friendly", note: "Close security partner on narcotics." },
+          { name: "Panama", rel: "complex", note: "The Darién Gap — a jungle migrant corridor." }
+        ]
+      },
+      {
+        name: "Venezuela", flag: "🇻🇪", capital: "Caracas",
+        cities: ["Maracaibo", "Valencia", "Barquisimeto", "Maracay"],
+        gov: "Federal presidential republic (disputed)", govType: "authoritarian",
+        leader: "President Nicolás Maduro (disputed 2024 re-election)",
+        alliances: ["OPEC", "ALBA", "CELAC"],
+        fact: "Sitting on the world's largest proven oil reserves and still mired in economic collapse. Maduro claimed a 2024 election most of the world doesn't recognize — opposition leader Edmundo González was forced into exile.",
+        neighbors: [
+          { name: "Colombia", rel: "complex", note: "Refugee outflows; re-opened diplomacy under Petro." },
+          { name: "Brazil", rel: "tense", note: "Brasília refused to endorse the 2024 vote result." },
+          { name: "Guyana", rel: "tense", note: "Revived claim to the oil-rich Essequibo region." }
+        ]
+      },
+      {
+        name: "Peru", flag: "🇵🇪", capital: "Lima",
+        cities: ["Arequipa", "Trujillo", "Chiclayo", "Cusco"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Dina Boluarte (since Dec 2022)",
+        alliances: ["Pacific Alliance", "OAS", "APEC"],
+        fact: "Six presidents in six years. Boluarte took over after her predecessor tried to dissolve Congress and got impeached instead. Democratic on paper, deeply fragile in practice.",
+        neighbors: [
+          { name: "Bolivia", rel: "complex", note: "Shared Lake Titicaca; ideological differences." },
+          { name: "Chile", rel: "complex", note: "Old maritime dispute, current trade partner." },
+          { name: "Brazil", rel: "friendly", note: "Amazon cooperation and road links." }
+        ]
+      },
+      {
+        name: "Ecuador", flag: "🇪🇨", capital: "Quito",
+        cities: ["Guayaquil", "Cuenca", "Santo Domingo", "Machala"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Daniel Noboa (since Nov 2023)",
+        alliances: ["OAS", "CAN"],
+        fact: "A country that was once one of Latin America's safest is now in a declared 'internal armed conflict' against cartels. Noboa — heir to a banana fortune — uses the military as a cop.",
+        neighbors: [
+          { name: "Colombia", rel: "complex", note: "Narco spillover across the northern jungle." },
+          { name: "Peru", rel: "friendly", note: "Border disputes resolved in 1998." }
+        ]
+      },
+      {
+        name: "Cuba", flag: "🇨🇺", capital: "Havana",
+        cities: ["Santiago de Cuba", "Camagüey", "Holguín", "Santa Clara"],
+        gov: "One-party socialist republic", govType: "authoritarian",
+        leader: "President Miguel Díaz-Canel (since 2019)",
+        alliances: ["ALBA", "CELAC"],
+        fact: "Sixty-five years after the revolution, Cuba is in its worst economic crisis since the fall of the Soviet Union — blackouts, mass emigration, and newly strained ties with a Trump-led Washington.",
+        neighbors: [
+          { name: "United States", rel: "tense", note: "Embargo endures; migration pressure grows." },
+          { name: "Venezuela", rel: "friendly", note: "Longtime ideological and oil ally." }
+        ]
+      },
+      {
+        name: "Haiti", flag: "🇭🇹", capital: "Port-au-Prince",
+        cities: ["Cap-Haïtien", "Les Cayes", "Gonaïves", "Pétion-Ville"],
+        gov: "Semi-presidential republic (transitional)", govType: "mixed",
+        leader: "Transitional Presidential Council (since Apr 2024)",
+        alliances: ["CARICOM", "OAS"],
+        fact: "The first Black republic in the world is now largely controlled by gangs. An internationally backed Kenyan-led security mission has struggled to stabilize Port-au-Prince.",
+        neighbors: [
+          { name: "Dominican Republic", rel: "tense", note: "Border walls and mass deportations strain ties." },
+          { name: "Cuba", rel: "friendly", note: "Medical cooperation for decades." }
+        ]
+      },
+      {
+        name: "Dominican Republic", flag: "🇩🇴", capital: "Santo Domingo",
+        cities: ["Santiago", "La Romana", "San Pedro de Macorís", "Puerto Plata"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Luis Abinader (since 2020, re-elected 2024)",
+        alliances: ["OAS", "CARICOM (observer)"],
+        fact: "The Caribbean's largest economy, buoyed by tourism and remittances. Abinader's hard line on the Haitian border — walls, deportations — is a politically popular and deeply controversial signature.",
+        neighbors: [
+          { name: "Haiti", rel: "tense", note: "Migration and canal-water disputes." }
+        ]
+      },
+      {
+        name: "Guatemala", flag: "🇬🇹", capital: "Guatemala City",
+        cities: ["Mixco", "Villa Nueva", "Quetzaltenango", "Escuintla"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Bernardo Arévalo (since Jan 2024)",
+        alliances: ["OAS", "SICA"],
+        fact: "An anti-corruption academic beat Guatemala's scandal-laced establishment, then barely survived months of legal assault before taking office. A fragile democracy, watched closely by Washington.",
+        neighbors: [
+          { name: "Mexico", rel: "complex", note: "Migrant transit corridor." },
+          { name: "Honduras", rel: "friendly", note: "Northern Triangle partner." },
+          { name: "Belize", rel: "tense", note: "Territorial claim still before the ICJ." }
+        ]
+      },
+      {
+        name: "Costa Rica", flag: "🇨🇷", capital: "San José",
+        cities: ["Alajuela", "Cartago", "Heredia", "Liberia"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Rodrigo Chaves (since 2022)",
+        alliances: ["OECD", "OAS", "SICA"],
+        fact: "Abolished its army in 1948 and never looked back. A Central American anomaly — stable, green, and aggressively mediating regional crises.",
+        neighbors: [
+          { name: "Nicaragua", rel: "tense", note: "Took in tens of thousands fleeing Ortega's crackdown." },
+          { name: "Panama", rel: "friendly", note: "Close trade and environmental ally." }
+        ]
+      },
+      {
+        name: "Panama", flag: "🇵🇦", capital: "Panama City",
+        cities: ["Colón", "David", "Santiago", "La Chorrera"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President José Raúl Mulino (since Jul 2024)",
+        alliances: ["OAS", "SICA"],
+        fact: "The canal handles ~6% of global maritime trade. Trump's 2025 talk of 'taking it back' over Chinese influence has made Panama the front line of hemispheric geopolitics.",
+        neighbors: [
+          { name: "Colombia", rel: "complex", note: "The Darién jungle is a migrant superhighway." },
+          { name: "Costa Rica", rel: "friendly", note: "Trade and border cooperation." }
+        ]
+      },
+      {
+        name: "Uruguay", flag: "🇺🇾", capital: "Montevideo",
+        cities: ["Salto", "Paysandú", "Las Piedras", "Punta del Este"],
+        gov: "Unitary presidential republic", govType: "democracy",
+        leader: "President Yamandú Orsi (since Mar 2025)",
+        alliances: ["Mercosur", "OAS"],
+        fact: "Latin America's quiet overachiever — legal cannabis, gay marriage, full democracy, low corruption. Orsi's victory returns the left to power without drama.",
+        neighbors: [
+          { name: "Argentina", rel: "friendly", note: "Shared history and River Plate." },
+          { name: "Brazil", rel: "friendly", note: "Mercosur partner with deep ties." }
+        ]
+      }
+    ];
   </script>
 </body>
 </html>
