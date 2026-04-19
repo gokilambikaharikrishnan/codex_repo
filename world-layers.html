@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layers of the World — An Explorer's Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="grain-overlay"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">✺</span>
+      <div class="brand-text">
+        <h1>Layers of the World</h1>
+        <p class="brand-sub">An Explorer's Field Atlas</p>
+      </div>
+    </div>
+    <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb">
+      <!-- populated by JS -->
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- Layer 1: Regions -->
+    <section class="layer layer-regions active" id="layer-regions">
+      <div class="compass-rose" aria-hidden="true">
+        <svg viewBox="0 0 200 200" width="180" height="180">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="100" cy="100" r="88" />
+            <circle cx="100" cy="100" r="70" stroke-dasharray="2 4" />
+            <circle cx="100" cy="100" r="32" />
+            <polygon points="100,14 108,100 100,186 92,100" fill="currentColor" fill-opacity="0.85" />
+            <polygon points="14,100 100,92 186,100 100,108" fill="currentColor" fill-opacity="0.55" />
+            <polygon points="40,40 100,94 154,154 98,102" fill="currentColor" fill-opacity="0.35" />
+            <polygon points="160,40 106,94 40,160 96,104" fill="currentColor" fill-opacity="0.35" />
+          </g>
+          <g font-family="Playfair Display, serif" font-size="14" fill="currentColor" text-anchor="middle">
+            <text x="100" y="10">N</text>
+            <text x="100" y="198">S</text>
+            <text x="6" y="104">W</text>
+            <text x="194" y="104">E</text>
+          </g>
+        </svg>
+      </div>
+      <div class="intro">
+        <p class="eyebrow">Volume I — The Atlas</p>
+        <h2>Six regions. One restless planet.</h2>
+        <p class="lede">A newcomer's crash course on the countries that share this Earth — their capitals, their quarrels, their alliances, and the stories behind their borders. Choose a region to begin your descent.</p>
+      </div>
+      <div class="region-grid" id="region-grid"></div>
+    </section>
+
+    <!-- Layer 2: Countries -->
+    <section class="layer layer-countries" id="layer-countries">
+      <div class="layer-header">
+        <button class="back-btn" data-back="regions">← Back to the World</button>
+        <h2 id="region-title"></h2>
+        <p class="region-tagline" id="region-tagline"></p>
+      </div>
+      <div class="country-grid" id="country-grid"></div>
+    </section>
+
+    <!-- Layer 3: Country Dossier -->
+    <section class="layer layer-dossier" id="layer-dossier">
+      <div class="layer-header">
+        <button class="back-btn" data-back="countries">← Back to Region</button>
+      </div>
+      <article class="dossier" id="dossier"></article>
+      <aside class="oracle" id="oracle">
+        <header class="oracle-header">
+          <h3>Ask the Oracle</h3>
+          <p>A slightly dramatic geopolitical scholar awaits your questions.</p>
+        </header>
+        <div class="oracle-log" id="oracle-log" aria-live="polite"></div>
+        <form class="oracle-form" id="oracle-form">
+          <input type="text" id="oracle-input" placeholder="Ask anything about this country…" autocomplete="off" />
+          <button type="submit">Consult</button>
+        </form>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Compiled by lamplight · A field journal for the curious traveller</span>
+  </footer>
+
+  <script>
+    // data + logic injected in later commits
+  </script>
+</body>
+</html>
