@@ -442,10 +442,27 @@
     }
     .oracle-header h3::before { content: "✦ "; color: var(--gold); }
     .oracle-header p {
-      margin: 0 0 16px;
+      margin: 0 0 10px;
       font-style: italic;
       color: #d9c7a0;
       font-size: 14px;
+    }
+    .oracle-header input {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0 0 16px;
+      padding: 8px 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(241,227,191,0.25);
+      background: rgba(20,14,4,0.55);
+      color: #f6ecd0;
+      font-family: var(--serif-body);
+      font-size: 13px;
+    }
+    .oracle-header input:focus {
+      outline: none;
+      border-color: var(--gold);
     }
     .oracle-log {
       display: flex;
@@ -608,6 +625,7 @@
         <header class="oracle-header">
           <h3>Ask the Oracle</h3>
           <p>A slightly dramatic geopolitical scholar awaits your questions.</p>
+          <input type="password" id="oracle-key" placeholder="Anthropic API key (sk-ant-…)" autocomplete="off" spellcheck="false" />
         </header>
         <div class="oracle-log" id="oracle-log" aria-live="polite"></div>
         <form class="oracle-form" id="oracle-form">
@@ -3175,8 +3193,18 @@
       breadcrumbs:    document.getElementById("breadcrumbs"),
       oracleLog:      document.getElementById("oracle-log"),
       oracleForm:     document.getElementById("oracle-form"),
-      oracleInput:    document.getElementById("oracle-input")
+      oracleInput:    document.getElementById("oracle-input"),
+      oracleKey:      document.getElementById("oracle-key")
     };
+
+    /* ---------- API KEY PERSISTENCE ---------- */
+    try {
+      const saved = localStorage.getItem("world-layers-api-key");
+      if (saved) el.oracleKey.value = saved;
+    } catch (_) {}
+    el.oracleKey.addEventListener("change", () => {
+      try { localStorage.setItem("world-layers-api-key", el.oracleKey.value.trim()); } catch (_) {}
+    });
 
     /* ---------- LAYER TRANSITIONS ---------- */
     function showLayer(name) {
@@ -3406,13 +3434,24 @@ House style:
         .filter(m => !m.pending)
         .map(m => ({ role: m.role, content: m.content }));
 
+      const apiKey = (el.oracleKey.value || "").trim();
+      if (!apiKey) {
+        state.oracleHistory[state.oracleHistory.length - 1] = {
+          role: "assistant", error: true,
+          content: "The Oracle's lamp needs oil — paste your Anthropic API key in the field above the chat."
+        };
+        renderOracleLog();
+        return;
+      }
+
       try {
         const res = await fetch("https://api.anthropic.com/v1/messages", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "anthropic-version": "2023-06-01",
-            "anthropic-dangerous-direct-browser-access": "true"
+            "anthropic-dangerous-direct-browser-access": "true",
+            "x-api-key": apiKey
           },
           body: JSON.stringify({
             model: "claude-sonnet-4-20250514",
